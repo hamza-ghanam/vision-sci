@@ -56,12 +56,14 @@ Route::get('privacy-policy', function () {
 
 Route::prefix('article')->group(function () {
     Route::get('search', [ArticleController::class, 'search'])->name('article.search');
+    Route::get('classifications', [ArticleController::class, 'search'])->name('article.classifications');
     Route::post('review/{id}', [ArticleController::class, 'review'])
         ->middleware('verified')
         ->name('article.review');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
+    Route::get('/', [ArticleController::class, 'adminIndex'])->name('admin.articles.index');
     Route::prefix('articles')->group(function () {
         Route::get('index', [ArticleController::class, 'adminIndex'])->name('admin.articles.index');
         Route::post('update/{id}', [ArticleController::class, 'adminArticleUpdate'])->name('admin.articles.update');

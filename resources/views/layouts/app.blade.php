@@ -20,6 +20,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('plugins/images/Global/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('plugins/images/Global/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('plugins/images/Global/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('plugins/images/Global/site.webmanifest') }}">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
 
@@ -197,32 +203,45 @@
                                                                                             <div class="wrapped ">
                                                                                                 <div
                                                                                                     class="widget-body body body-none  body-compact-all">
-                                                                                                    <div
-                                                                                                        class="loginBar not-logged-in">
-                                                                                                        <i class="nav-icon fas fa-user"></i>
-                                                                                                        @guest
+                                                                                                    @guest
+                                                                                                        <div class="loginBar not-logged-in">
+                                                                                                            <i class="nav-icon fas fa-user"></i>
+
                                                                                                             <a href="{{ URL::to('login') }}"
                                                                                                                class="register-link">
                                                                                                                 Login
                                                                                                             </a>
-                                                                                                            <span class="loginSeprator">&nbsp;|&nbsp;</span>
+                                                                                                            <span
+                                                                                                                class="loginSeprator">&nbsp;|&nbsp;</span>
                                                                                                             <a href="{{ URL::to('register') }}"
                                                                                                                class="register-link">
                                                                                                                 Register
                                                                                                             </a>
-                                                                                                        @else
-                                                                                                            <a href="{{ route('profile.index') }}"
-                                                                                                               class="register-link">
-                                                                                                                My
-                                                                                                                Profile
-                                                                                                            </a>
-                                                                                                            <span class="loginSeprator">&nbsp;|&nbsp;</span>
-                                                                                                            <a class="register-link" href="{{ url('/logout') }}"> Logout </a>                                                                                                        @endguest
-                                                                                                        <!--
-                                                                                                        <span
-                                                                                                            class="loginSeprator">&nbsp;|&nbsp;</span>
-                                                                                                            -->
-                                                                                                    </div>
+                                                                                                        </div>
+                                                                                                    @else
+                                                                                                        <div class="loginBar logged-in" tabindex="0">
+                                                                                                            <span class="fullIndividualName hidden-xs hidden-sm visible-tl ">
+                                                                                                                <span class="individualHeading">
+                                                                                                                    Hi, {{ auth()->user()->name }} <i class="fas fa-angle-down" style="margin-left: 5px;"></i>
+                                                                                                                </span>
+                                                                                                                <span class="yourAccountTxt">Your account</span>
+                                                                                                            </span>
+                                                                                                            <span class="hidden-lg hidden-md icon-user hidden-tl individualIcon"></span>
+                                                                                                            <ul class="LoginBarList" style="display: none;">
+                                                                                                                <li>
+                                                                                                                    <a href="{{ route('profile.index') }}" id="indivLogin">
+                                                                                                                        Articles Management
+                                                                                                                    </a>
+                                                                                                                </li>
+                                                                                                                <li>
+                                                                                                                    <a href="#" id="indivLogin">
+                                                                                                                        Account settings
+                                                                                                                    </a>
+                                                                                                                </li>
+                                                                                                                <li><a href="{{ url('/logout') }}">Sign out</a></li>
+                                                                                                            </ul>
+                                                                                                        </div>
+                                                                                                    @endguest
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -264,26 +283,16 @@
                 <div class="widget-body body body-none  body-compact-all">
                     <footer class="page-footer">
                         <div data-pb-dropzone="main">
-                            <div
-                                class="widget responsive-layout none footer-links widget-none  widget-compact-horizontal"
-                                id="64a44adf-45ed-4da3-be26-ef25beb9dbee">
+                            <div class="widget responsive-layout none footer-links widget-none  widget-compact-horizontal"
+                                 id="64a44adf-45ed-4da3-be26-ef25beb9dbee">
                                 <div class="wrapped ">
                                     <div class="widget-body body body-none  body-compact-horizontal">
                                         <div class="container">
                                             <div class="row row-md  ">
                                                 <div class="col-md-1-2 ">
                                                     <div class="contents" data-pb-dropzone="contents0">
-                                                        <div
-                                                            class="widget responsive-layout none footer-responsive-container widget-none"
-                                                            id="6918e9df-910a-4206-9bd0-1a02bc17f740">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1-2 ">
-                                                    <div class="contents" data-pb-dropzone="contents1">
-                                                        <div
-                                                            class="widget responsive-layout none footer-responsive-container widget-none"
-                                                            id="fc564559-f496-499c-87c7-d851f371f061">
+                                                        <div class="widget responsive-layout none footer-responsive-container widget-none"
+                                                             id="6918e9df-910a-4206-9bd0-1a02bc17f740">
                                                             <div class="wrapped ">
                                                                 <div class="widget-body body body-none ">
                                                                     <div class="container-fluid">
@@ -291,10 +300,123 @@
                                                                             <div class="col-sm-1-2 footer_left_col">
                                                                                 <div class="contents"
                                                                                      data-pb-dropzone="contents0">
-                                                                                    <div
-                                                                                        class="widget general-html none  widget-none  widget-compact-all"
-                                                                                        id="cdd1a577-15dc-4271-8941-33a105ec6510">
 
+                                                                                    <div class="widget general-html none  widget-none  widget-compact-all"
+                                                                                         id="aa9510dd-52ed-4b74-8211-fb510cd9468e">
+                                                                                        <div class="wrapped ">
+                                                                                            <div class="widget-body body body-none  body-compact-all">
+                                                                                                <div class="footer-info-list">
+                                                                                                    <h3>Information for</h3>
+                                                                                                    <ul>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('home') }}">Authors</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('article.classifications') }}">Articles Classifications</a>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1-2 footer_right_col">
+                                                                                <div class="contents"
+                                                                                     data-pb-dropzone="contents1">
+                                                                                    <div class="widget general-html none  widget-none  widget-compact-all"
+                                                                                         id="ac8a1c0f-9427-44dd-96be-4f2a6ff4ffce">
+                                                                                        <div class="wrapped ">
+                                                                                            <div class="widget-body body body-none  body-compact-all">
+                                                                                                <div class="footer-info-list">
+                                                                                                    <h3>Your Article Area</h3>
+                                                                                                    <ul>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('profile.index') }}">Your Articles</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('profile.add') }}">Submit a new manuscript</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('profile.download', ['id' => 'guidelines']) }}">Download our guidelines</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('profile.index') }}">Follow-up your article status</a>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1-2 ">
+                                                    <div class="contents" data-pb-dropzone="contents1">
+
+                                                        <div class="widget responsive-layout none footer-responsive-container widget-none"
+                                                             id="fc564559-f496-499c-87c7-d851f371f061">
+                                                            <div class="wrapped ">
+                                                                <div class="widget-body body body-none ">
+                                                                    <div class="container-fluid">
+                                                                        <div class="row row-sm  ">
+                                                                            <div class="col-sm-1-2 footer_left_col">
+                                                                                <div class="contents"
+                                                                                     data-pb-dropzone="contents0">
+                                                                                    <div class="widget general-html none  widget-none  widget-compact-all"
+                                                                                         id="cdd1a577-15dc-4271-8941-33a105ec6510">
+                                                                                        <div class="wrapped ">
+                                                                                            <div class="widget-body body body-none  body-compact-all">
+                                                                                                <div class="footer-info-list">
+                                                                                                    <h3>My Account</h3>
+                                                                                                    <ul>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('home') }}">My Personal Info</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('password.request') }}"
+                                                                                                               class="footer-ad-click">Reset my password</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('home') }}">Register me in news letter</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('home') }}">Deactivate my account</a>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1-2 footer_right_col">
+                                                                                <div class="contents"
+                                                                                     data-pb-dropzone="contents1">
+                                                                                    <div class="widget general-html none  widget-none  widget-compact-all"
+                                                                                         id="f3fb3d36-db42-4373-9d0e-432958bf2fbc">
+                                                                                        <div class="wrapped ">
+                                                                                            <div class="widget-body body body-none  body-compact-all">
+                                                                                                <div class="footer-info-list">
+                                                                                                    <h3>Help and
+                                                                                                        information</h3>
+                                                                                                    <ul>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('privacy-policy') }}">Privacy policy</a>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <a href="{{ route('cookies') }}">Cookies</a>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -310,18 +432,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="widget responsive-layout none footer-links widget-none  widget-compact-horizontal"
-                                id="b2eecf80-9109-455e-a805-028552718986">
+                            <div class="widget responsive-layout none footer-links widget-none  widget-compact-horizontal"
+                                 id="b2eecf80-9109-455e-a805-028552718986">
                                 <div class="wrapped ">
                                     <div class="widget-body body body-none  body-compact-horizontal">
                                         <div class="container">
                                             <div class="row row-md  ">
                                                 <div class="col-md-1-2 ">
                                                     <div class="contents" data-pb-dropzone="contents0">
-                                                        <div
-                                                            class="widget responsive-layout none footer-responsive-container widget-none"
-                                                            id="b997c64c-ce48-41ce-b3d6-9cb2d1c99131">
+                                                        <div class="widget responsive-layout none footer-responsive-container widget-none"
+                                                             id="b997c64c-ce48-41ce-b3d6-9cb2d1c99131">
                                                             <div class="wrapped ">
                                                                 <div class="widget-body body body-none ">
                                                                     <div class="container-fluid">
@@ -503,7 +623,7 @@
                                                             <div class="wrapped 612">
                                                                 <div
                                                                     class="widget-body body body-none  body-compact-vertical">
-                                                                    <a href="http://taylorandfrancis.com/"
+                                                                    <a href="{{ route('home') }}"
                                                                        title="VISION SCIENCES">
                                                                         <img
                                                                             src="{{ asset('plugins/images/Global/Group-logo-white-on-transparent.png') }}"
@@ -527,7 +647,7 @@
                                             <a href="#" class="btn">Accept</a>
                                             <p class="message">We use cookies to improve your website experience. To
                                                 learn about our use of cookies and how you can manage your cookie
-                                                settings, please see our <a href="cookies.html">Cookie Policy.</a> By
+                                                settings, please see our <a href="{{ route('cookies') }}">Cookie Policy.</a> By
                                                 closing this message, you are consenting to our use of cookies.</p>
                                         </div>
                                     </div>
@@ -540,6 +660,54 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    JQSHIM.$.forEach(function (f) {
+        $(f);
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(() => setTimeout(() => {
+        let _bnw = window, _bna = atob("bG9jYXRpb24="), _bnb = atob("b3JpZ2lu"), _hn = _bnw[_bna][_bnb],
+            _bnt = btoa(_hn + new Array(5 - _hn.length % 4).join(" "));
+        $.get("/resource/lodash?t=" + _bnt);
+    }, 4000));
+</script>
+<script type="text/javascript" src="{{ asset('plugins/wro/ldlf_product.js') }}"></script>
+<script type="text/javascript" src="{{ asset('plugins/wro/jhp-main.js') }}"></script>
+<script src="https://unpkg.com/@theidentityselector/thiss-ds" type="application/javascript"></script>
+<script>
+    loadCSS("{{ asset('plugins/wro/ldlf_lastInBody-css.css') }}");
+    loadCSS("https://fonts.googleapis.com/css?family=Droid%20Serif:bold,bolditalic,italic,regular&amp;display=swap");
+    $(function () {
+        TandfUtils.scriptLoader([
+            {js: '/wro/ldlf~jwplayer.js', selector: '.mediaThumbnailContainer, .preview-video-abstract'},
+            {js: '/wro/ldlf~mathjax.js', enabled: typeof MathJax !== 'undefined'},
+            {js: '/wro/ldlf~altmetric.js', enabled: typeof tandfData.altmetric !== 'undefined'},
+            {js: '/wro/ldlf~crossmark.js', selector: '.cross_mark--link'},
+            {js: '/wro/ldlf~ajax-widgets.js', css: '/wro/ldlf~ajax-widgets.css', selector: '.ajaxWidget'},
+            {
+                js: '/wro/ldlf~loi-api.js',
+                selector: '.toc-fns,.literatumListOfIssuesResponsiveWidget,.literatumListOfIssuesWidget'
+            },
+            {js: '/wro/ldlf~abstract-preview.js', selector: '.search-article-tools .previewLinks'}
+            ,
+            {js: "/wro/ldlf~seamless-access-fn.js", selector: ".seamlessAccess_wrapper,.institutional-login"},
+            {js: '/wro/ldlf~raa-shibboleth.js', selector: ".institutional-login"}
+
+        ])
+    });
+</script>
+<noscript>
+    <link rel="stylesheet" href="{{ asset('plugins/wro/ldlf_lastInBody-css.css') }}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Droid%20Serif:bold,bolditalic,italic,regular&amp;display=swap">
+</noscript>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
+        integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
+        data-cf-beacon='{"rayId":"7324914e6a4a1fab","token":"b6951d00f50a499ab38e94f58955e14d","version":"2022.6.0","si":100}'
+        crossorigin="anonymous"></script>
+
 @yield('script')
 </body>
 </html>

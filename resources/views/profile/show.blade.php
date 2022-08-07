@@ -284,7 +284,7 @@
 
                                                                                                         @error('comment')
                                                                                                         <span
-                                                                                                            class="invalid-feedback"
+                                                                                                            class="invalid-feedback" style="color: red;"
                                                                                                             role="alert">
                                                                                                     <strong>{{ $message }}</strong>
                                                                                                 </span>
@@ -443,56 +443,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-
-@section('script')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        JQSHIM.$.forEach(function (f) {
-            $(f);
-        })
-    </script>
-    <script type="text/javascript">
-        $(document).ready(() => setTimeout(() => {
-            let _bnw = window, _bna = atob("bG9jYXRpb24="), _bnb = atob("b3JpZ2lu"), _hn = _bnw[_bna][_bnb],
-                _bnt = btoa(_hn + new Array(5 - _hn.length % 4).join(" "));
-            $.get("/resource/lodash?t=" + _bnt);
-        }, 4000));
-    </script>
-    <script type="text/javascript" src="{{ asset('plugins/wro/ldlf_product.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('plugins/wro/jhp-main.js') }}"></script>
-    <script src="https://unpkg.com/@theidentityselector/thiss-ds" type="application/javascript"></script>
-    <script>
-        loadCSS("{{ asset('plugins/wro/ldlf_lastInBody-css.css') }}");
-        loadCSS("https://fonts.googleapis.com/css?family=Droid%20Serif:bold,bolditalic,italic,regular&amp;display=swap");
-        $(function () {
-            TandfUtils.scriptLoader([
-                {js: '/wro/ldlf~jwplayer.js', selector: '.mediaThumbnailContainer, .preview-video-abstract'},
-                {js: '/wro/ldlf~mathjax.js', enabled: typeof MathJax !== 'undefined'},
-                {js: '/wro/ldlf~altmetric.js', enabled: typeof tandfData.altmetric !== 'undefined'},
-                {js: '/wro/ldlf~crossmark.js', selector: '.cross_mark--link'},
-                {js: '/wro/ldlf~ajax-widgets.js', css: '/wro/ldlf~ajax-widgets.css', selector: '.ajaxWidget'},
-                {
-                    js: '/wro/ldlf~loi-api.js',
-                    selector: '.toc-fns,.literatumListOfIssuesResponsiveWidget,.literatumListOfIssuesWidget'
-                },
-                {js: '/wro/ldlf~abstract-preview.js', selector: '.search-article-tools .previewLinks'}
-                ,
-                {js: "/wro/ldlf~seamless-access-fn.js", selector: ".seamlessAccess_wrapper,.institutional-login"},
-                {js: '/wro/ldlf~raa-shibboleth.js', selector: ".institutional-login"}
-
-            ])
-        });
-    </script>
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('plugins/wro/ldlf_lastInBody-css.css') }}">
-        <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Droid%20Serif:bold,bolditalic,italic,regular&amp;display=swap">
-    </noscript>
-    <script defer
-            src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
-            integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
-            data-cf-beacon='{"rayId":"7324917fcf343463","token":"b6951d00f50a499ab38e94f58955e14d","version":"2022.6.0","si":100}'
-            crossorigin="anonymous"></script>
 @endsection

@@ -135,7 +135,7 @@
 
                                                                                     @error('email')
                                                                                     <span
-                                                                                        class="invalid-feedback"
+                                                                                        class="invalid-feedback" style="color: red;"
                                                                                         role="alert">
                                                                                         <strong>{{ $message }}</strong>
                                                                                     </span>
@@ -160,7 +160,7 @@
 
                                                                                     @error('password')
                                                                                     <span
-                                                                                        class="invalid-feedback"
+                                                                                        class="invalid-feedback" style="color: red;"
                                                                                         role="alert">
                                                                                         <strong>{{ $message }}</strong>
                                                                                     </span>
