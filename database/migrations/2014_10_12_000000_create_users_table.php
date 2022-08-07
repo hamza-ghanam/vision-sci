@@ -19,8 +19,17 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('phone')->nullable();
+            $table->enum('status', ['active', 'inactive'])
+                ->default('active');
+            $table->string('website')->nullable();
+            $table->string('institution')->nullable();
+            $table->foreignId('country_id')
+                ->constrained()
+                ->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
