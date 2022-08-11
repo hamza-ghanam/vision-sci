@@ -61,6 +61,7 @@
 
 
 
+
                                             </script>
                                         </div>
                                     </div>
@@ -187,53 +188,58 @@
                                                                         </div>
                                                                         <br/>
                                                                         <br/>
-                                                                        <div style="overflow-x: auto;">
-                                                                            <table
-                                                                                class="tableBox table-responsive table-striped table-bordered"
-                                                                                style="width: 100%;">
-                                                                                <thead>
-                                                                                <tr class="row">
-                                                                                    <th>#</th>
-                                                                                    <th>Title</th>
-                                                                                    <th>Publish Date</th>
-                                                                                    <th>link</th>
-                                                                                    <th>Type</th>
-                                                                                    <th>Classification</th>
-                                                                                    <th>Language</th>
-                                                                                    <th>Status</th>
-                                                                                    <th>Download</th>
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                @foreach($articles as $key => $article)
+                                                                        @if (count($articles) === 0)
+                                                                            <h3 style="text-align: center; color: darkred">
+                                                                                You have no articles yet!</h3>
+                                                                        @else
+                                                                            <div style="overflow-x: auto;">
+                                                                                <table
+                                                                                    class="tableBox table-responsive table-striped table-bordered"
+                                                                                    style="width: 100%;">
+                                                                                    <thead>
                                                                                     <tr class="row">
-                                                                                        @php
-                                                                                            $badge = $article->status === 'New' ? 'new' : ($article->status === 'Under Review' ? 'review' : ($article->status === 'Resubmit' ? 'resubmit' : ($article->status === 'Accepted' ? 'accepted' : 'rejected')));
-                                                                                        @endphp
-                                                                                        <td>{{ $key+1 }}</td>
-                                                                                        <td>
-                                                                                            <a href="{{ route('profile.show', ['id' => $article->id]) }}">{{ $article->title }}</a>
-                                                                                        </td>
-                                                                                        <td>{{ $article->publish_date }}</td>
-                                                                                        <td>{{ $article->link }}</td>
-                                                                                        <td>{{ $article->type }}</td>
-                                                                                        <td>{{ $article->classification->title }}</td>
-                                                                                        <td>{{ $article->language }}</td>
-                                                                                        <td>
+                                                                                        <th>#</th>
+                                                                                        <th>Title</th>
+                                                                                        <th>Publish Date</th>
+                                                                                        <th>link</th>
+                                                                                        <th>Type</th>
+                                                                                        <th>Classification</th>
+                                                                                        <th>Language</th>
+                                                                                        <th>Status</th>
+                                                                                        <th>Download</th>
+                                                                                    </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                    @foreach($articles as $key => $article)
+                                                                                        <tr class="row">
+                                                                                            @php
+                                                                                                $badge = $article->status === 'New' ? 'new' : ($article->status === 'Under Review' ? 'review' : ($article->status === 'Resubmit' ? 'resubmit' : ($article->status === 'Accepted' ? 'accepted' : 'rejected')));
+                                                                                            @endphp
+                                                                                            <td>{{ $key+1 }}</td>
+                                                                                            <td>
+                                                                                                <a href="{{ route('profile.show', ['id' => $article->id]) }}">{{ $article->title }}</a>
+                                                                                            </td>
+                                                                                            <td>{{ $article->publish_date }}</td>
+                                                                                            <td>{{ $article->link }}</td>
+                                                                                            <td>{{ $article->type }}</td>
+                                                                                            <td>{{ $article->classification->title }}</td>
+                                                                                            <td>{{ $article->language }}</td>
+                                                                                            <td>
                                                                                         <span
                                                                                             class="badge-{{ $badge }}">
                                                                                             {{ $article->status }}
                                                                                         </span>
-                                                                                        </td>
-                                                                                        <td style="  padding-left: 3% !important;">
-                                                                                            <a href="{{ route('profile.download', ['id' => $article->id]) }}"><i
-                                                                                                    class="fas fa-download"></i></a>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                @endforeach
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
+                                                                                            </td>
+                                                                                            <td style="  padding-left: 3% !important;">
+                                                                                                <a href="{{ route('profile.download', ['id' => $article->id]) }}"><i
+                                                                                                        class="fas fa-download"></i></a>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    @endforeach
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\Classification;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -77,7 +76,14 @@ class ArticleController extends Controller
 
     public function adminIndex()
     {
-        return view('admin.articles')->with(['articles' => Article::all()]);
+        $articles = Article::all();
+
+        foreach ($articles as $key => $article) {
+            $submitter = User::find($article->submitter);
+            $article->submitter = $submitter ? $submitter->name : '-';
+        }
+
+        return view('admin.articles')->with(['articles' => $articles]);
     }
 
     public function adminArticleShow($id)
@@ -97,6 +103,11 @@ class ArticleController extends Controller
             }
 
             $article->avgRate = ceil($sum / count($article->reviews));
+        }
+
+        if ($article->submitter !== null) {
+            $submitter = User::find($article->submitter);
+            $article->submitter = $submitter ? $submitter->name : '-';
         }
 
         return view('admin.articleShow')->with(['article' => $article]);

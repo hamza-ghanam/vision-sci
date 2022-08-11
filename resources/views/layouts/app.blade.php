@@ -490,9 +490,9 @@
                                                                                                     </div>
                                                                                                     <div
                                                                                                         class="pull-left links">
-                                                                                                        <a href="http://facebook.com/">
-                                                                                                            <i class="fab fa-facebook-square"
-                                                                                                               title="Vision Sciences Facebook Page"
+                                                                                                        <a href="https://www.instagram.com/VisionScienceSA//">
+                                                                                                            <i class="fab fa-instagram-square"
+                                                                                                               title="Vision Sciences Instagram Page"
                                                                                                                aria-hidden="true"
                                                                                                                role="button"></i>
                                                                                                             <span
@@ -507,7 +507,7 @@
                                                                                                     </div>
                                                                                                     <div
                                                                                                         class="pull-left links">
-                                                                                                        <a href="https://twitter.com/">
+                                                                                                        <a href="https://twitter.com/SciencesVision/">
                                                                                                             <i class="fab fa-twitter-square"
                                                                                                                title="VISION SCIENCES Twitter page"
                                                                                                                aria-hidden="true"
@@ -520,7 +520,7 @@
                                                                                                     </div>
                                                                                                     <div
                                                                                                         class="pull-left links">
-                                                                                                        <a href="http://linkedin.com/">
+                                                                                                        <a href="https://www.linkedin.com/in/vision-sciences-962a55247/">
                                                                                                             <i class="fab fa-linkedin-square"
                                                                                                                title="VISION SCIENCES LinkedIn page"
                                                                                                                aria-hidden="true"
@@ -535,6 +535,7 @@
                                                                                                     <div
                                                                                                         class="clearfix"></div>
                                                                                                         -->
+                                                                                                    <!--
                                                                                                     <div
                                                                                                         class="pull-left links">
                                                                                                         <a href="https://www.youtube.com/">
@@ -561,6 +562,7 @@
 </span>
                                                                                                         </a>
                                                                                                     </div>
+                                                                                                    -->
                                                                                                     <div
                                                                                                         class="clearfix"></div>
                                                                                                 </div>

@@ -88,7 +88,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ URL::to('/admin/articles/index') }}" class="brand-link">
-            <img src="{{ asset('../plugins/images/Global/tfo_logo_sm.png') }}" alt="AdminLTE Logo"
+            <img src="{{ asset('../plugins/images/Global/tfo_logo_sm.orig.png') }}" alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light"><strong

@@ -97,6 +97,7 @@ class ProfileController extends Controller
                 'status' => 'New',
                 'keywords' => $request->keywords,
                 'link' => $fileName,
+                'submitter' => auth()->user()->id
             ]);
 
             foreach ($request->authors as $key => $author) {
@@ -117,7 +118,16 @@ class ProfileController extends Controller
 
     public function show($id)
     {
-        $article = Article::whereId($id)->whereStatus('Accepted')->first();
+        $article = Article::find($id);
+
+        if (Auth::check() && Auth::user()->getRoleNames()[0] !== 'admin') {
+            if ($article->status !== 'Accepted' && $article->submitter !== auth()->user()->id) {
+                return redirect()->route('home');
+            }
+        } else {
+            return redirect()->route('home');
+        }
+
 
         if (!$article) {
             return redirect()->route('home')->withErrors(['msg' => 'File not found.']);

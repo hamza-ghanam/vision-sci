@@ -103,7 +103,7 @@
                                         <span class="badge bg-{{ $badge }} mb-3">
                                             {{$article->status}}
                                         </span>
-                                        <form name="f1" method="POST"
+                                        <form name="f1" method="POST" enctype="multipart/form-data"
                                               action="{{ route('admin.articles.update', ['id' => $article->id]) }}">
                                             @csrf
                                             <div class="form-group mb-2">
@@ -115,8 +115,8 @@
                                                         New
                                                     </option>
                                                     <option
-                                                        value="Under Reviewed" {{ $article->status === 'Under Reviewed' ? 'selected' : '' }}>
-                                                        Under Reviewed
+                                                        value="Under Review" {{ $article->status === 'Under Review' ? 'selected' : '' }}>
+                                                        Under Review
                                                     </option>
                                                     <option
                                                         value="Resubmit" {{ $article->status === 'Resubmit' ? 'selected' : '' }}>
