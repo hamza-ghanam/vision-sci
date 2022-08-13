@@ -63,6 +63,7 @@ Route::prefix('article')->group(function () {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
+    Route::get('login', [UserController::class, 'adminLogin'])->name('admin.account.login');
     Route::get('/', [ArticleController::class, 'adminIndex'])->name('admin.articles.index');
     Route::prefix('articles')->group(function () {
         Route::get('index', [ArticleController::class, 'adminIndex'])->name('admin.articles.index');
@@ -94,7 +95,5 @@ Route::prefix('account')->group(function () {
     Route::put('update', [UserController::class, 'updateAccount'])
         ->middleware('verified')
         ->name('account.update');
-
-    Route::get('admin/login', [UserController::class, 'adminLogin'])->name('admin.account.login');
 });
 

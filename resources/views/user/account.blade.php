@@ -67,7 +67,7 @@
 
 @section('content')
 
-    <div data-widget-def="pageBody" data-widget-id="35d9ca18-265e-4501-9038-4105e95a4b7d" role="main">
+        <div data-widget-def="pageBody" data-widget-id="35d9ca18-265e-4501-9038-4105e95a4b7d" role="main">
 
         <div class="widget pageBody none  widget-none  widget-compact-all"
              id="35d9ca18-265e-4501-9038-4105e95a4b7d">
