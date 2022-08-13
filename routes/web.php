@@ -87,6 +87,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     });
 });
 
-Route::get('admin/login', [UserController::class, 'adminLogin'])->name('admin.account.login');
+Route::prefix('account')->group(function () {
+    Route::get('edit', [UserController::class, 'editAccount'])
+        ->middleware('verified')
+        ->name('account.edit');
+    Route::put('update', [UserController::class, 'updateAccount'])
+        ->middleware('verified')
+        ->name('account.update');
 
+    Route::get('admin/login', [UserController::class, 'adminLogin'])->name('admin.account.login');
+});
 

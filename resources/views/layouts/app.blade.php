@@ -234,7 +234,7 @@
                                                                                                                     </a>
                                                                                                                 </li>
                                                                                                                 <li>
-                                                                                                                    <a href="#" id="indivLogin">
+                                                                                                                    <a href="{{ route('account.edit') }}" id="indivLogin">
                                                                                                                         Account settings
                                                                                                                     </a>
                                                                                                                 </li>

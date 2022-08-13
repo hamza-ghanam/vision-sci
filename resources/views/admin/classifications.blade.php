@@ -32,7 +32,7 @@
     @endif
 
     @if(session()->has('successMsg'))
-        <div class="alert alert-dismissible alert-success">
+        <div class="alert" style="background-color: #6ad373; border-radius: 4px; padding: 5px;">
             {{ session()->get('successMsg') }}
         </div>
     @endif
