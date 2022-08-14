@@ -377,7 +377,7 @@
                                                                                                     <h3>My Account</h3>
                                                                                                     <ul>
                                                                                                         <li>
-                                                                                                            <a href="{{ route('home') }}">My Personal Info</a>
+                                                                                                            <a href="{{ route('account.edit') }}">My Personal Info</a>
                                                                                                         </li>
                                                                                                         <li>
                                                                                                             <a href="{{ route('password.request') }}"
