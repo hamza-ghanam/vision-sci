@@ -94,7 +94,7 @@
                                                     @foreach($classifications as $key => $classification)
                                                         <li>
                                                             <h3>
-                                                                <a href="{{ route('article.search', ['term' => $classification->title]) }}">
+                                                                <a href="{{ route('article.showClass', ['id' => $classification->id]) }}">
                                                                     {{ $classification->title }}
                                                                 </a>
                                                             </h3>

@@ -309,7 +309,7 @@
                                                                                                     <h3>Information for</h3>
                                                                                                     <ul>
                                                                                                         <li>
-                                                                                                            <a href="{{ route('home') }}">Authors</a>
+                                                                                                            <a href="{{ route('article.authors') }}">Authors</a>
                                                                                                         </li>
                                                                                                         <li>
                                                                                                             <a href="{{ route('article.classifications') }}">Articles Classifications</a>

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use PharIo\Manifest\Author;
+use Spatie\Permission\Models\Role;
 
 class ProfileController extends Controller
 {
@@ -107,6 +108,8 @@ class ProfileController extends Controller
                     $newUser = User::create([
                         'name' => $author
                     ]);
+
+                    $newUser->assignRole(Role::whereName('author')->first());
 
                     $newUser->articles()->save($article);
                 }

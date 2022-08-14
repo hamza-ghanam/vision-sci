@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Classification;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,6 +13,37 @@ use Illuminate\Validation\Rule;
 
 class ArticleController extends Controller
 {
+    public function browseClassifications()
+    {
+        return view('article.classifications')->with(['classifications' => Classification::all()]);
+    }
+
+    public function showClass($id)
+    {
+        return view('article.classification')->with([
+            'articles' => Article::where('classification_id', $id)->get(),
+            'classification' => Classification::findOrFail($id)
+        ]);
+    }
+
+    public function authors()
+    {
+        return view('article.authors')->with(['authors' => User::role('author')->get()]);
+    }
+
+    public function showAuthor($id)
+    {
+        $author = User::role('author')->whereId($id)->first();
+
+        if (!$author) {
+            return back()->withErrors(['msg' => 'Author not found.']);
+        }
+
+        return view('article.author')->with([
+            'author' => User::role('author')->whereId($id)->first()
+        ]);
+    }
+
     public function search(Request $request)
     {
         $request->term = strtolower($request->term);

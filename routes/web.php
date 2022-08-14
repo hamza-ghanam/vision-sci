@@ -56,7 +56,11 @@ Route::get('privacy-policy', function () {
 
 Route::prefix('article')->group(function () {
     Route::get('search', [ArticleController::class, 'search'])->name('article.search');
-    Route::get('classifications', [ArticleController::class, 'search'])->name('article.classifications');
+    Route::get('classifications', [ArticleController::class, 'browseClassifications'])->name('article.classifications');
+    Route::get('showClass/{id}', [ArticleController::class, 'showClass'])->name('article.showClass');
+    Route::get('authors', [ArticleController::class, 'authors'])->name('article.authors');
+    Route::get('showAuthor/{id}', [ArticleController::class, 'showAuthor'])->name('article.showAuthor');
+    //Route::get('classifications', [ArticleController::class, 'search'])->name('article.classifications');
     Route::post('review/{id}', [ArticleController::class, 'review'])
         ->middleware('verified')
         ->name('article.review');
